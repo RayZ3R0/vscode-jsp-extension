@@ -1,8 +1,8 @@
 {
   "name": "jsp-language-support",
   "displayName": "JSP Language Support",
-  "description": "Syntax highlighting and auto-indentation for JSP files",
-  "version": "0.0.2",
+  "description": "Syntax highlighting for JSP files",
+  "version": "1.0.0",
   "publisher": "Z3R0",
   "engines": {
     "vscode": "^1.99.0"
