@@ -1,0 +1,61 @@
+{
+  "name": "jsp-language-support",
+  "displayName": "JSP Language Support",
+  "description": "Syntax highlighting and auto-indentation for JSP files",
+  "version": "0.0.2",
+  "publisher": "Z3R0",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "jsp",
+        "aliases": [
+          "JavaServer Pages",
+          "jsp"
+        ],
+        "extensions": [
+          ".jsp",
+          ".jspx",
+          ".jspf",
+          ".tag",
+          ".tagf"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "jsp",
+        "scopeName": "text.html.jsp",
+        "path": "./syntaxes/jsp.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.java": "java",
+          "text.html": "html"
+        }
+      }
+    ]
+  },
+  "activationEvents": [
+    "onLanguage:jsp"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint . --ext .ts,.tsx",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "@types/vscode": "^1.99.0",
+    "@vscode/vsce": "^3.3.2",
+    "typescript": "^5.8.3",
+    "vsce": "^2.15.0"
+  }
+}

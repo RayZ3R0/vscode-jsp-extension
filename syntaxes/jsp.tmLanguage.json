@@ -1,0 +1,159 @@
+{
+  "scopeName": "text.html.jsp",
+  "fileTypes": ["jsp", "jspx", "jspf", "tag", "tagf"],
+  "injections": {
+    "text.html.jsp": {
+      "patterns": [
+        { "include": "#jsp-scriptlet" },
+        { "include": "#jsp-declaration" },
+        { "include": "#jsp-expression" },
+        { "include": "#jsp-directive" },
+        { "include": "#jsp-comment" },
+        { "include": "#jsp-tags" }
+      ]
+    }
+  },
+  "patterns": [{ "include": "text.html.basic" }],
+  "repository": {
+    "jsp-scriptlet": {
+      "name": "meta.scriptlet.jsp",
+      "begin": "<%(?![=@!])",
+      "end": "%>",
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.embedded.begin.jsp" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.embedded.end.jsp" }
+      },
+      "contentName": "source.java.embedded.jsp",
+      "patterns": [{ "include": "source.java" }]
+    },
+    "jsp-declaration": {
+      "name": "meta.declaration.jsp",
+      "begin": "<%!",
+      "end": "%>",
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.embedded.begin.jsp" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.embedded.end.jsp" }
+      },
+      "contentName": "source.java.embedded.jsp",
+      "patterns": [{ "include": "source.java" }]
+    },
+    "jsp-expression": {
+      "name": "meta.expression.jsp",
+      "begin": "<%=",
+      "end": "%>",
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.embedded.begin.jsp" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.embedded.end.jsp" }
+      },
+      "contentName": "source.java.embedded.jsp",
+      "patterns": [{ "include": "source.java" }]
+    },
+    "jsp-directive": {
+      "name": "meta.directive.jsp",
+      "begin": "<%@",
+      "end": "%>",
+      "beginCaptures": {
+        "0": { "name": "punctuation.section.embedded.begin.jsp" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.section.embedded.end.jsp" }
+      },
+      "patterns": [
+        {
+          "match": "\\b(page|include|taglib|tag|attribute|variable)\\b",
+          "name": "keyword.directive.jsp"
+        },
+        {
+          "match": "\\b(language|extends|import|session|buffer|autoFlush|isThreadSafe|info|errorPage|contentType|pageEncoding|isErrorPage|isELIgnored|prefixAttribute)\\b",
+          "name": "support.constant.attribute.directive.jsp"
+        },
+        {
+          "match": "\\b(file|uri|prefix|tagdir)\\b",
+          "name": "support.constant.attribute.directive.jsp"
+        },
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.jsp"
+        },
+        {
+          "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.jsp"
+        }
+      ]
+    },
+    "jsp-comment": {
+      "name": "comment.block.jsp",
+      "begin": "<%--",
+      "end": "--%>",
+      "captures": {
+        "0": { "name": "punctuation.definition.comment.jsp" }
+      }
+    },
+    "jsp-tags": {
+      "name": "meta.tag.jsp",
+      "begin": "<(jsp:|c:|fn:|sql:|x:|fmt:|)([a-zA-Z0-9_:-]+)",
+      "beginCaptures": {
+        "1": { "name": "entity.name.tag.namespace.jsp" },
+        "2": { "name": "entity.name.tag.jsp" }
+      },
+      "end": "/?>",
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.tag.jsp" }
+      },
+      "patterns": [
+        {
+          "match": "\\s+([a-zA-Z0-9_:-]+)",
+          "name": "entity.other.attribute-name.jsp"
+        },
+        {
+          "begin": "=\\s*\"",
+          "end": "\"",
+          "beginCaptures": {
+            "0": { "name": "punctuation.separator.key-value.jsp" }
+          },
+          "endCaptures": {
+            "0": { "name": "string.quoted.double.jsp" }
+          },
+          "patterns": [
+            {
+              "match": "\\$\\{([^\\}]*)\\}",
+              "name": "variable.other.jstl.jsp"
+            },
+            {
+              "match": ".",
+              "name": "string.quoted.double.jsp"
+            }
+          ]
+        },
+        {
+          "begin": "=\\s*'",
+          "end": "'",
+          "beginCaptures": {
+            "0": { "name": "punctuation.separator.key-value.jsp" }
+          },
+          "endCaptures": {
+            "0": { "name": "string.quoted.single.jsp" }
+          },
+          "patterns": [
+            {
+              "match": "\\$\\{([^\\}]*)\\}",
+              "name": "variable.other.jstl.jsp"
+            },
+            {
+              "match": ".",
+              "name": "string.quoted.single.jsp"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
