@@ -4,12 +4,35 @@
   "description": "Syntax highlighting for JSP files",
   "version": "1.0.0",
   "publisher": "Z3R0",
+  "author": {
+    "name": "Z3R0"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.99.0"
   },
   "categories": [
     "Programming Languages"
   ],
+  "keywords": [
+    "jsp",
+    "javaserver pages",
+    "java",
+    "web development",
+    "syntax"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RayZ3R0/vscode-jsp-extension"
+  },
+  "bugs": {
+    "url": "https://github.com/RayZ3R0/vscode-jsp-extension/issues"
+  },
+  "homepage": "https://github.com/RayZ3R0/vscode-jsp-extension#readme",
+  "galleryBanner": {
+    "color": "#0273D4",
+    "theme": "dark"
+  },
   "contributes": {
     "languages": [
       {
